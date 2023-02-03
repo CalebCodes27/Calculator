@@ -1,18 +1,11 @@
-﻿/**
- * Disclaimer:
- * this codes is improve version of the codes that you just watched on our youtube channel 
- * Keep in mind that this is a super basic simple calculator, this is not optimize and have a lot of limitations
- * and not suitable for production, this code are made for total beginners in C# 
- * if you need a complete codes for calculator, you are in the wrong place
- */
-
-using System;
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
-public class Calculator : MonoBehaviour
+public class Calc : MonoBehaviour
 {
-    #region Fields
     public TextMeshProUGUI InputText;
     private float _result;
     private float _input;
@@ -20,9 +13,17 @@ public class Calculator : MonoBehaviour
     private string _operation;
     private string _currentInput;
     private bool _equalIsPressed;
-    #endregion Fields
-    
-    #region Methods
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     public void ClickNumber(int val)
     {
         Debug.Log($" check val: {val}");
@@ -39,7 +40,6 @@ public class Calculator : MonoBehaviour
         }
         InputText.text = $"{_currentInput}";
     }
-    
     public void ClickOperation(string val)
     {
         Debug.Log($" ClickOperation val: {val}");
@@ -70,14 +70,12 @@ public class Calculator : MonoBehaviour
             }
         }
     }
-    
     public void ClickEqual(string val)
     {
         Debug.Log($" ClickEqual val: {val}");
         Calculate();
         _equalIsPressed = true;
     }
-
     private void Calculate()
     {
         if (_input != 0 && !string.IsNullOrEmpty(_operation) )
@@ -106,7 +104,6 @@ public class Calculator : MonoBehaviour
             _input = _result;
         }
     }
-
     private void SetCurrentInput()
     {
         if (!string.IsNullOrEmpty(_currentInput))
@@ -122,8 +119,6 @@ public class Calculator : MonoBehaviour
             _currentInput = "";    
         }
     }
-
-    // clear all the inputs
     public void ClearInput()
     {
         _currentInput= "";
@@ -132,5 +127,5 @@ public class Calculator : MonoBehaviour
         _result = 0;
         InputText.SetText("");
     }
-    #endregion Methods
+
 }
