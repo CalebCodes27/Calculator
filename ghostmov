@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ghostsc : MonoBehaviour
+{
+    public Transform[] dest;
+    public float [] x;
+    public float [] y;
+    public float speed=0.4f;
+    int a=0;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+
+        Vector3 p = Vector3.MoveTowards(transform.position, dest[a].position, speed);
+        GetComponent<Rigidbody2D>().MovePosition(p);
+        if (p==dest[a].position)
+        {
+            a +=1;
+            print(a);}
+            if(a>39)
+            {
+                a=0;
+            }
+        
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.name=="pacman")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
+
+}
