@@ -1,0 +1,16 @@
+case BoardType.Three:
+                    var l = Random.Range(0, 9);
+                    //var k = Random.Range(0, 10);
+                    if (LevelManager.Instance.boxTexts[l].GetComponentInParent<Button>().interactable)
+                    {
+                        print("autobox");
+                        StartCoroutine(boxTexts[l].GetComponentInParent<Box>().AutoClickBox());
+                        
+                    }
+                    else
+                    {
+                        AutoClick();
+
+                    }
+
+                    break;
